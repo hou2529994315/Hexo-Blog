@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, monkey-nut">
+    <meta name="keywords" content="hexo个人博客搭建, monkey-nut">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | monkey-nut</title>
+    <title>hexo个人博客搭建 | monkey-nut</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">hexo个人博客搭建</h1>
                 </div>
             </div>
         </div>
@@ -373,6 +373,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                个人博客
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -380,7 +389,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-14
+                    2021-01-15
                 </div>
                 
 
@@ -389,7 +398,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    820
                 </div>
                 
 
@@ -406,15 +415,75 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><p>先行条件，事先安装</p>
+<ul>
+<li>Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
+<li>Git</li>
+</ul>
+</li>
+<li><p>全局安装hexo</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli</code></pre>
+</li>
+<li><p>执行hexo<br>方式一、<code>npx hexo &lt;command&gt;</code><br>方式二、略</p>
+</li>
+<li><p>生成文件<br>安装 Hexo 完成后，执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<pre class=" language-bash"><code class="language-bash">hexo init <span class="token operator">&lt;</span>folder<span class="token operator">></span>
+<span class="token function">cd</span> <span class="token operator">&lt;</span>folder<span class="token operator">></span>
+<span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<p>新建完成后，指定文件夹的目录如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">.</span>
+├── _config.yml
+├── package.json
+├── scaffolds
+├── <span class="token function">source</span>
+<span class="token operator">|</span>   ├── _drafts
+<span class="token operator">|</span>   └── _posts
+└── themes</code></pre>
+</li>
+<li><p>文件介绍</p>
+<ul>
+<li>_config.yml<br>  网站的 配置 信息，可以在此配置大部分的参数。</li>
+<li>package.json<br>  应用程序的信息。EJS, Stylus 和 Markdown renderer 已默认安装，可以自由移除。</li>
+<li>scaffolds<br>  模版 文件夹。新建文章时，Hexo 会根据 <code>scaffold</code> 来建立文件。</li>
+<li>source<br>  资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</li>
+<li>themes<ol>
+<li>主题 文件夹。Hexo 会根据主题来生成静态页面。</li>
+<li>主题的配置文件里放置的配置会覆盖主题目录下的 _config.yml 中的配置</li>
+<li>Hexo 在合并主题配置时，Hexo 配置文件中的 <code>theme_config</code> 的优先级最高，其次是 <code>_config.[theme].yml</code> 文件，最后是位于主题目录下的 <code>_config.yml</code> 文件。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands">https://hexo.io/zh-cn/docs/commands</a></p>
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><ul>
+<li><p><strong>创建新文章或者新页面</strong></p>
+<pre class=" language-bash"><code class="language-bash">hexo new post <span class="token operator">&lt;</span>title<span class="token operator">></span>    <span class="token comment" spellcheck="true"># 在source/_posts下创建新的名称为&lt;title>的md文件</span>
+hexo new page <span class="token operator">&lt;</span>title<span class="token operator">></span>    <span class="token comment" spellcheck="true"># 在source下创建新的名称为&lt;title>的md文件</span>
+hexo new draft <span class="token operator">&lt;</span>title<span class="token operator">></span>    <span class="token comment" spellcheck="true"># 在source/_drafts下创建新的名称为&lt;title>的md文件</span></code></pre>
+<p>如果不希望主题对文章进行处理，可以在顶部添加<code>layout：false</code></p>
+</li>
+<li><p><strong>文件名称</strong><br>Hexo 默认以标题做为文件名称，但您可编辑 new_post_name 参数来改变默认的文件名称，举例来说，设为 :year-:month-:day-:title.md 可让您更方便的通过日期来管理文章。</p>
+</li>
+<li><p><strong>草稿</strong><br>草稿中的文章可以通过<code>publish</code>命令移动到<code>source/_drafts</code>文件夹中</p>
+<pre class=" language-bash"><code class="language-bash">hexo publish <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>title<span class="token operator">></span></code></pre>
+<p>把<code>config.yml</code>中的<code>render_drafts</code>设置为<code>true</code>可以预览草稿</p>
+</li>
+<li><p><strong>模板(Scaffold)</strong><br><code>scaffolds</code> 文件夹内存放了模板<br>在新建文章时，Hexo 会根据模板建立文件</p>
+<pre class=" language-bash"><code class="language-bash">hexo new photo <span class="token string">"My Gallery"</span></code></pre>
+</li>
+</ul>
+<h2 id="设置格式"><a href="#设置格式" class="headerlink" title="设置格式"></a>设置格式</h2><ul>
+<li><p><strong>Front-matter</strong><br>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">https://hexo.io/zh-cn/docs/front-matter</a></p>
+</li>
+<li><p><strong>分类和标签</strong><br>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
+</li>
+<li><p><strong>标签插件</strong><br>标签插件和 Front-matter 中的标签不同，它们是用于在文章中快速插入特定内容的插件<br>内容较多，类似于各种前端组件，需要的时候再查吧</p>
+</li>
+</ul>
 
                 
             </div>
@@ -441,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.nightmare.cool/2021/01/14/16107.html/">http://blog.nightmare.cool/2021/01/14/16107.html/</a>
+                    <a href="http://blog.nightmare.cool/2021/01/15/1.html/">http://blog.nightmare.cool/2021/01/15/1.html/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -524,13 +593,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/15/1.html/">
+                <a href="/2021/01/15/8177.html/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="hexo个人博客搭建">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="添加草稿">
                         
-                        <span class="card-title">hexo个人博客搭建</span>
+                        <span class="card-title">添加草稿</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -545,12 +614,8 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    个人博客
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            monkey-nut
                             
                         </span>
                     </div>
@@ -562,7 +627,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/01/14/16107.html/">
@@ -592,7 +657,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
