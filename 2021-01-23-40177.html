@@ -1,0 +1,1217 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL(3) DQL语言, monkey-nut">
+    <meta name="description" content="学习笔记">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL(3) DQL语言 | monkey-nut</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">monkey-nut</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/photos" class="waves-effect waves-light">
+      
+      <i class="fas fa-images" style="zoom: 0.6;"></i>
+      
+      <span>相册</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">monkey-nut</div>
+        <div class="logo-desc">
+            
+            学习笔记
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/photos" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-images"></i>
+			
+			相册
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL(3) DQL语言</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-23
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    654
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><p>格式：<code>SELECT 查询列表 FROM 表名</code>；<br>查询列表可以是：表中的字段、常量值、表达式、函数<br>查询的结果是一个虚拟的表格</p>
+<p>建议在查询开始的地方选中目标数据库<code>USE myemployees;</code></p>
+<ol>
+<li><p>查询表中的单个字段</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT last_name FROM employees;</code></pre>
+</li>
+<li><p>查询表中的多个字段</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT last_name,salary,email FROM employees;</code></pre>
+</li>
+<li><p>查询表中的所有字段</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT * FROM employees;</code></pre>
+</li>
+<li><p>如果字段名和关键字重名，要用``括起来</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT `NAME` FROM stuifo;</code></pre>
+</li>
+<li><p>查询常量值</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 100;
+SELECT "John";</code></pre>
+</li>
+<li><p>查询表达式</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 100%98;</code></pre>
+</li>
+<li><p>查询函数</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT VERSION();</code></pre>
+</li>
+<li><p>设置别名<br>作用：便于理解、区分重名</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 100%98 AS 结果;
+SELECT last_name AS 姓, first_name AS 名 FROM employees;</code></pre>
+<p>简写</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT last_name 姓,first_name 名 FROM employees;</code></pre>
+<p>别名可以添加双引号,产生存在空格的别名</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT salary AS "out put" FROM employees;</code></pre>
+</li>
+<li><p>去重（DISTINCT）</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT DISTINCT department_id FROM employees;</code></pre>
+</li>
+<li><p>+号的作用<br>mysql中+号只有一个功能：运算符<br>“100”+90;字符型加数值型，则先将字符型转换成数值型。若转换成功，则加法运算。若转换失败，则转换为0<br>null + 数值型 = null<br>字符串拼接需要用函数<code>CONCAT()</code>.</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+CONCAT(last_name, first_name ) AS 姓名 
+FROM
+employees;</code></pre>
+</li>
+<li><p>拼接employee的全部列，并用逗号连接</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ IFNULL( commission_pct, 0 ) AS 奖金率,
+ commission_pct 
+FROM
+ employees;
+SELECT
+CONCAT(
+    first_name,
+    ',',
+    last_name,
+    ',',
+    job_id,
+    ',',
+IFNULL( commission_pct, 0 )) AS out_put 
+FROM
+employees;</code></pre>
+</li>
+</ol>
+<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p><strong>语法</strong>：</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+        查询列表
+FROM
+        表名
+WHERE
+        筛选条件;逐行筛选</code></pre>
+<p><strong>执行顺序</strong>：<br>    1. from   先查看当前数据库有没有这张表<br>    2. where  筛选，筛选出满足要求的行<br>    3. select 查询需要的类</p>
+<p><strong>分类</strong>：</p>
+<ul>
+<li>按条件表达式筛选<br>  条件运算符 ：&gt; &lt; = &lt;&gt; &gt;= &lt;=</li>
+<li>按逻辑表达式筛选<br>  逻辑运算符：<ul>
+<li>&amp;&amp; || !</li>
+<li>and or not</li>
+</ul>
+</li>
+<li>模糊查询</li>
+<li>like</li>
+<li>between and</li>
+<li>in</li>
+<li>is null</li>
+</ul>
+<ol>
+<li><p>工资大于12000的员工信息</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ * 
+FROM
+ employees 
+WHERE
+ salary > 12000;</code></pre>
+</li>
+<li><p>部门标号不等于90号的员工名和部门编号</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ last_name,
+ department_id 
+FROM 
+ employees 
+WHERE
+ department_id != 90;
+ department_id <> 90;</code></pre>
+</li>
+<li><p>查询工资在10000到20000之间的员工名、工资和奖金</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ last_name,
+ salary,
+ commission_pct 
+FROM
+ employees 
+WHERE
+ salary >= 10000 
+ AND salary <= 20000;</code></pre>
+</li>
+<li><p>查询员工名中包含字符a的员工信息(默认不区分大小写)<br><code>like</code>一般和通配符搭配使用<br>通配符有：</p>
+</li>
+</ol>
+<ul>
+<li>%，任意多个字符，包含0个字符</li>
+<li>—，任意单个字符<pre class=" language-mysql"><code class="language-mysql">SELECT
+  *
+FROM
+  employees
+WHERE
+  last_name LIKE '%a%';</code></pre>
+</li>
+</ul>
+<ol start="5">
+<li><p>查询员工名第三个字符为n,第五个字符为l的员工名</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ last_name
+FROM
+ employees
+WHERE
+ last_name LIKE '__n_l%';</code></pre>
+</li>
+<li><p> 6.1. 查询第二个字符为_的员工名(转义运算符 )</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+last_name
+FROM
+employees
+WHERE
+last_name LIKE '_\_%';</code></pre>
+<p> 6.2. 也可以随意指定转义符</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+last_name
+FROM
+employees
+WHERE
+last_name LIKE '_$_%' ESCAPE '$';</code></pre>
+</li>
+<li><p>查询员工编号在100到120之间的员工信息<br><code>between and</code>可以提高语句的简洁度，它包含两侧数指的临界值</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ *
+FROM
+ employees
+WHERE
+ department_id BETWEEN 100 AND 110;</code></pre>
+</li>
+<li><p>查询员工的工种编号是 ‘FI_MGR’, ‘FI_ACCOUNT’, ‘AC_MGR’, ‘AD_VP’的员工信息<br><code>in</code>:判断某字段的值是否属于in列表中的某一项<br>特点</p>
+<ul>
+<li>提高语句简介度</li>
+<li>in列表中的值类型必须一致或兼容</li>
+<li>in列表中不支持通配符<pre class=" language-mysql"><code class="language-mysql">SELECT
+last_name,
+job_id
+FROM
+employees
+WHERE
+job_id IN('FI_MGR', 'FI_ACCOUNT', 'AC_MGR', 'AD_VP');</code></pre>
+</li>
+</ul>
+</li>
+<li><p> 9.1. 查询没有奖金的员工名和奖金率<br><code>is null</code>: &lt; &gt; = 不能用于判断null值</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ last_name,
+ commission_pct
+FROM
+ employees
+WHERE
+ commission_pct IS NULL;</code></pre>
+<p> 9.2. 查询有奖金的员工名和奖金率</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+ last_name,
+ commission_pct
+FROM
+ employees
+WHERE
+ commission_pct IS NOT NULL;    </code></pre>
+</li>
+<li><p>安全等于  &lt;=&gt;</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT
+last_name,
+commission_pct
+FROM
+employees
+WHERE
+commission_pct <=> NULL;    
+</code></pre>
+</li>
+</ol>
+<p><strong>对比</strong><br><code>IS NULL</code> :仅仅可以判断null值，可读性较高<br><code>&lt;=&gt;</code> :既可以判断NULL值，也可以判断普通数值，但是可读性较低。建议用IS NULL</p>
+<h2 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h2><p>语法：</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 查询列表
+FROM   表
+[WHERE 筛选条件]
+ORDER BY 排序列表 [ASC、DESC];</code></pre>
+<p>特点：</p>
+<ul>
+<li>默认升序</li>
+<li>ORDER BY 子句支持单个字段、多个字段、表达式、函数、别名的排序</li>
+<li>ORDER BY 子句一般是放在查询语句的最后边。LIMIT子句除外。</li>
+</ul>
+<p>1.<br>    1.1 查询员工信息，要求工资从高到底排序</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT * FROM employees ORDER BY salary DESC;</code></pre>
+<pre><code>1.2 从低到高排序,ASC可省略，即默认排序是升序</code></pre>
+<pre class=" language-mysql"><code class="language-mysql">SELECT * FROM employees ORDER BY salary ASC;
+SELECT * FROM employees ORDER BY salary;</code></pre>
+<ol start="2">
+<li><p>查询部门编号&gt;=90的员工信息，按入职时间排序</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT * 
+FROM employees
+WHERE department_id >= 90
+ORDER BY hiredate ASC;</code></pre>
+</li>
+<li><p>按年薪的高低排序显示【按表达式排序】</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT *, salary*12*(1+IFNULL(commission_pct,0)) AS 年薪
+FROM employees
+ORDER BY salary*12*(1+IFNULL(commission_pct,0));</code></pre>
+</li>
+<li><p>支持按别名排序</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT *, salary*12*(1+IFNULL(commission_pct,0)) AS 年薪
+FROM employees
+ORDER BY 年薪;</code></pre>
+</li>
+<li><p>按姓名的长度显示员工的姓名和工资【按函数排序】</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT LENGTH(last_name) 字节长度, last_name, salary
+FROM employees
+ORDER BY 字节长度;</code></pre>
+</li>
+<li><p>先按工资排序，再按员工编号排序【按多个字段排序】</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT *
+FROM employees
+ORDER BY salary ASC, employee_id DESC;</code></pre>
+</li>
+</ol>
+<hr>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">monkey-nut</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://blog.nightmare.cool/2021-01-23-40177.html">http://blog.nightmare.cool/2021-01-23-40177.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">monkey-nut</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021-01-24-53496.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MySql(4) 常用函数">
+                        
+                        <span class="card-title">MySql(4) 常用函数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021-01-23-40175.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Docker(1) 简介和原理">
+                        
+                        <span class="card-title">Docker(1) 简介和原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">monkey-nut</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">备案/许可证号：豫ICP备2020025825号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/hou2529994315" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2529994315@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2529994315" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2529994315" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1398 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL(7) MySQL高级, monkey-nut">
+    <meta name="description" content="学习笔记">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL(7) MySQL高级 | monkey-nut</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">monkey-nut</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/photos" class="waves-effect waves-light">
+      
+      <i class="fas fa-images" style="zoom: 0.6;"></i>
+      
+      <span>相册</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">monkey-nut</div>
+        <div class="logo-desc">
+            
+            学习笔记
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/photos" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-images"></i>
+			
+			相册
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL(7) MySQL高级</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-23
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.5k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="MySQL高级"><a href="#MySQL高级" class="headerlink" title="MySQL高级"></a>MySQL高级</h1><h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>新安装的MySQL需要改为UTF-8编码，修改配置文件后不会改变已创建的数据库的字符集。</p>
+<p>二进制日志文件 </p>
+<ul>
+<li>log-bin 用于主从复制</li>
+<li>log-err 记录mysql的错误日志</li>
+<li>查询日志log 用于记录查询的sql语句</li>
+</ul>
+<p>数据文件</p>
+<ul>
+<li>frm文件 存放表结构</li>
+<li>myd文件 存放表数据</li>
+<li>myi文件 存放表索引</li>
+</ul>
+<h2 id="MySQL架构介绍"><a href="#MySQL架构介绍" class="headerlink" title="MySQL架构介绍"></a>MySQL架构介绍</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306145316.png"></p>
+<blockquote>
+<p>和其它数据库相比，MySQL有 点与众不同，它的架构可以在多种不同场景中应用并发挥良好作用。主要体现在存储引擎的架构上，<strong>插件式的存储引擎架树将查询处理和其它的系统任务以及数据的存储提取相分离</strong>。这种架构可以<strong>根据业务的需求和实际需要选择合适的存储引擎</strong>。</p>
+</blockquote>
+<ul>
+<li>连接层<br>最上层是客户端和连接服务，包含本地的socket和大多数基于客户端/服务端工具实现的类似于tcp/ip的通信，完成连接处理、授权认证等安全方案。连接层上引入了连接池，为通过安全认证的客户端提供线程，在该层可实现SSL安全连接，服务器还会对每个安全接入的客户端进行验证，赋予操作权限。</li>
+</ul>
+<p>2 服务层<br>完成大多数的核心服务功能，如SQL接口，完成缓存的查询，SQL的分析优化及内置函数的执行，跨存储引擎的功能实现也在该层，如过程、函数等。在这一层，服务器会解析查询，并创建相应的内部解析树，完成相应的优化，如查询表的顺序、是否利用索引、最后生成相应的执行操作，如果是select操作，服务器会查询内部缓存，如果缓存的空间足够大，在解决大量的读环境中能很好的提升性能。</p>
+<p>3 引擎层<br>存储引擎实现了MySQL中数据的存储和提取，服务器通过API和存储引擎进行通讯，不同的存储引擎的特性不同，可根据需求选取，主要用到的是MyISAM和InnoDB。默认使用InnoDB。</p>
+<p>4 存储层<br>将数据存储在裸设备的文件系统之上，并完成与存储引擎的交互。如NRFS,NFS等</p>
+<h3 id="MySQL存储引擎"><a href="#MySQL存储引擎" class="headerlink" title="MySQL存储引擎"></a>MySQL存储引擎</h3><h4 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h4><p>默认的存储引擎，支持外键、事务，行锁（适合高并发），缓存索引d的同时缓存真实数据，对内存的要求高，内存的大小对性能有决定性影响，表的空间大，更关注于事务，安装时默认安装该存储引擎。</p>
+<h4 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h4><p>不支持外键、事务，采用表锁，在操作一条记录时也会锁住整张表，不适合并发场景，只缓存索引，不缓存真实数据。表空间小，更关注性能。安装时默认安装该存储引擎。</p>
+<h4 id="Percona的XtraDB"><a href="#Percona的XtraDB" class="headerlink" title="Percona的XtraDB"></a>Percona的XtraDB</h4><p> Percona对MySQL进行了改进，使其在功能和性能上都有了很大的提升，使用XtraDB代替了InnoDB，在性能和并发上做的更好。阿里等公司使用该引擎，或进一步优化。</p>
+<h2 id="索引优化分析"><a href="#索引优化分析" class="headerlink" title="索引优化分析"></a>索引优化分析</h2><h3 id="性能低的原因"><a href="#性能低的原因" class="headerlink" title="性能低的原因"></a>性能低的原因</h3><ul>
+<li>查询语句不合理</li>
+<li>索引失效<ul>
+<li>单值索引</li>
+<li>多值索引</li>
+</ul>
+</li>
+<li>关联查询的join过多</li>
+<li>服务器调优（缓冲、线程数等）</li>
+</ul>
+<h3 id="sql解析步骤"><a href="#sql解析步骤" class="headerlink" title="sql解析步骤"></a>sql解析步骤</h3><p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306151431.png"></p>
+<h3 id="SQL的连接方式"><a href="#SQL的连接方式" class="headerlink" title="SQL的连接方式"></a>SQL的连接方式</h3><ul>
+<li><p>内连接<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306151702.png"></p>
+</li>
+<li><p>左连接<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306151757.png"></p>
+</li>
+<li><p>右连接<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306151829.png"></p>
+<ul>
+<li><p>左连接去重<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306152051.png"></p>
+</li>
+<li><p>右连接去重<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306152159.png"></p>
+</li>
+</ul>
+</li>
+<li><p>全连接（MySQL不支持）<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306152344.png"></p>
+</li>
+</ul>
+<p>由于MySQL不支持，所以使用左连接+右连接+union去重实现全连接的查询需求。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> tab_a <span class="token keyword">left</span> <span class="token keyword">join</span> tab_b <span class="token keyword">on</span> <span class="token number">a</span><span class="token punctuation">.</span>depId <span class="token operator">=</span> <span class="token number">b</span><span class="token punctuation">.</span>id 
+<span class="token keyword">union</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> tab_a <span class="token keyword">right</span> <span class="token keyword">join</span> tab_b <span class="token keyword">on</span> <span class="token number">a</span><span class="token punctuation">.</span>depId <span class="token operator">=</span> <span class="token number">b</span><span class="token punctuation">.</span>id<span class="token punctuation">;</span> </code></pre>
+<ul>
+<li>特点<br>左连接、右连接会自动补NULL</li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>索引（Index）是帮助MySQL高效获取数据的数据结构，排好序的快速查找数据结构。<br>索引的本质是数据结构<br><strong>索引的目的：提高查找效率</strong></p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>提高数据检索的效率，降低数据库的I0成本</li>
+<li>降低数据排序的成本，降低了CPU的消耗</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>实际上索引也是一张表，该表保存了主键与索引字段，并指向实体表的记录，所以索引列也是要占用空间的</li>
+<li>虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT. UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件每次更新添加了索引列的字段，都会调整因为更新所带来的键值变化后的索引信息</li>
+<li>索引只是提高效率的一个因素，如果你的MySQL有大数据量的表，就<strong>需要花时间研究建立最优秀的索引</strong>，或优化查询语句</li>
+</ul>
+</li>
+<li><p>索引会影响查找和排序的效率</p>
+</li>
+<li><p>主键本身也是索引</p>
+</li>
+<li><p>在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构通过引用（指针）的方式引用数据，这样就可以在此数据结构的基础上实现高级算法，这种数据结构就是索引。</p>
+</li>
+</ul>
+<p>*一般来说索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。</p>
+<h3 id="索引结构"><a href="#索引结构" class="headerlink" title="索引结构"></a>索引结构</h3><ul>
+<li>Btree</li>
+<li>Hash索引</li>
+<li>full-text全文索引</li>
+<li>R-Tree索引</li>
+</ul>
+<p>如果没有特别说明，所说的索引都指B树结构组织的索引。聚集索引、次要索引、复合索引、前缀索引、唯一索引都默认使用B+树索引，统称索引。出了B+树索引，还有哈希索引</p>
+<h3 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h3><ul>
+<li><p>单值索引：即一个索引只包含单个列，一个表可以有多个单列索引</p>
+</li>
+<li><p>唯一索引：索引列的值必须唯一， 但允许有空值</p>
+</li>
+<li><p>复合索引：即一个索引包含多个列</p>
+</li>
+<li><p>操作</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 创建</span>
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token keyword">UNIQUE</span> <span class="token punctuation">]</span> <span class="token keyword">INDEX</span> indexName <span class="token keyword">ON</span> mytable<span class="token punctuation">(</span>columnname<span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">ALTER</span> mytable <span class="token keyword">ADD</span> <span class="token punctuation">[</span><span class="token keyword">UNIQUE</span> <span class="token punctuation">]</span> <span class="token keyword">INDEX</span> <span class="token punctuation">[</span>indexName<span class="token punctuation">]</span> <span class="token keyword">ON</span> <span class="token punctuation">(</span>columnname<span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#删除</span>
+<span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> <span class="token punctuation">[</span>indexName<span class="token punctuation">]</span> <span class="token keyword">ON</span> mytable<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">#查看</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">INDEX</span> <span class="token keyword">FROM</span> table_ name\G</code></pre>
+</li>
+</ul>
+<h3 id="何时创建索引"><a href="#何时创建索引" class="headerlink" title="何时创建索引"></a>何时创建索引</h3><h4 id="需要创建索引"><a href="#需要创建索引" class="headerlink" title="需要创建索引"></a>需要创建索引</h4><ol>
+<li>主键自动建立唯一索引</li>
+<li>频繁作为查询条件的字段应该创建索引</li>
+<li>查询中与其它表关联的字段，外键关系建立索引</li>
+<li>频繁更新的字段不适合创建索引，因为每次更新不单单是更新了记录还会更新索引，加重了I0负担</li>
+<li> Where条件里用不到的字段不创建索引</li>
+<li>单键/组合索引的选择问题，who?(在高并发下倾向创建组合索引)</li>
+<li>查询中排序的字段，排序字段若通过索引去访问将大大提高排序速度。</li>
+<li>查询中统计或者分组字段表记录太少.</li>
+</ol>
+<h4 id="不创建索引"><a href="#不创建索引" class="headerlink" title="不创建索引"></a>不创建索引</h4><ol>
+<li>表记录太少（300万左右性能开始下降）<br>Why:提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。</li>
+<li>经常增删改的表<br>因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件</li>
+<li>数据重复且分布平均的表字段，因此应该只为最经常查询和最经常排序的数据列建立索引。<br>注意，如果某个数据列包含许多重复的内容，为它建立索引就没有太大的实际效果。</li>
+</ol>
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><h4 id="MySQL-Query-Optimizer-查询优化器"><a href="#MySQL-Query-Optimizer-查询优化器" class="headerlink" title="MySQL Query Optimizer(查询优化器)"></a>MySQL Query Optimizer(查询优化器)</h4><ul>
+<li>MySQL中有专门负责优化SELECT语句的优化器模块，该模块主要通过计算分析系统中手机的统计信息，为客户端请求的Query提供他人为最优的执行计划（但是他认为最优的检索方式不见得是DBA人为最优的）</li>
+<li>当客户端向MySQL请求一条Query时，命令解析器模块完成请求分类，区别出是SELECT并转发给MySQL Query Optimizer时，MySQL Query Optimizer首先对整条Query中的查询条件进行简化和转换，如去掉一些无用或者显而易见的条件、结构调整等，然后分析Query中的Hint信息（如果有）,看监视Hint信息是否可以完全确定Query的执行计划，如果没有Hint或Hint信息不足以完全确定执行计划，则会读取所涉及对象的统计信息，根据Query进行谐响应的计算分析，然后得出最后的执行计划。</li>
+</ul>
+<h4 id="MySQL的常见瓶颈"><a href="#MySQL的常见瓶颈" class="headerlink" title="MySQL的常见瓶颈"></a>MySQL的常见瓶颈</h4><ul>
+<li>CPU：CPU饱和的时候一般发生在数据装入内存或从磁盘上读取数据的时候</li>
+<li>IO：磁盘的IO瓶颈发生在装入数据远大于内存容量的时候</li>
+<li>服务器硬件的性能瓶颈：top，free，iostat，vmstat来查看系统的性能状态</li>
+</ul>
+<h3 id="Explain"><a href="#Explain" class="headerlink" title="Explain"></a>Explain</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>​ 使用Explain关键字可以模拟优化器执行SQL查询语句，从而知道MySQL是如何处理你的SQL语句的，分析查询语句或是表结构的性能瓶颈。</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ul>
+<li>查看表的读取顺序（id，table字段）</li>
+<li>展现数据读取操作的操作类型（select_type）</li>
+<li>哪些索引可以使用</li>
+<li>哪些索引被实际使用</li>
+<li>表之间的引用</li>
+<li>每张表有多少行被优化器查询<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4>​ Explain + SQL语句，得到分析结果</li>
+</ul>
+<p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306191015.png"></p>
+<p><strong>包含的信息</strong></p>
+<ul>
+<li><p><strong>id</strong><br>select查询的序列号，包含一组数字，表示查询中执行select子句或操作表的顺序，NULL最后执行。</p>
+<ul>
+<li>id相同，执行顺序由上至下（table字段）</li>
+<li>id不同，如果是子查询，id的序列号会递增，id值越大，所对应的table字段的表越先执行。</li>
+<li>id相同和不同：id值越大，优先级越高，越先执行，id相同的部分是一组，从上往下执行。<br>注：table中的derivedx表示衍生表，x代表由谁执行后衍生的。<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306191613.png"></li>
+</ul>
+</li>
+<li><p><strong>select_type</strong><br>数据读取操作的操作类型</p>
+<ul>
+<li>SIMPLE : 简单的select查询，查询中不包含子查询或UNION</li>
+<li>PRIMARY : 查询中若包含任何复杂的子部分时，最外层查询被标记为子查询（最后加载的那个）</li>
+<li>SUBQUERY : 在SELECT或WHERE列表中包含了子查询</li>
+<li>DERIVED : 在FROM列表中包含的子查询被标记为DERIVED（衍生表），MySQL会递归执行这些子查询，把结果放在临时表中。</li>
+<li>UNION : 若第二个SELECT出现在UNION之后，则被标记为UNION；若UNION包含在FROM子句的子查询中，外层SELECT将被标记为DERIVED</li>
+<li>UNION RESULT : 从UNION表获取结果的SELECT</li>
+</ul>
+</li>
+<li><p><strong>table</strong><br>表示是哪一张表</p>
+</li>
+<li><p><strong>type</strong><br>访问类型排列，显示了查询使用了哪种类型，从好到差的排列顺序为：<strong>systerm &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</strong></p>
+</li>
+</ul>
+<p>ALL表示全表扫描，一般来说至少达到range级别，最好能达到ref。<br>    1. systerm：表只有一行记录（等于系统表），是const类型的特例，平时不会出现，可忽略不计<br>    2. const：表示通过索引一次就找到了，const用来比较primary key或unique索引，因为只匹配一行数据，所以很快，如果将主键至于WHERE列表中，MySQL就将该查询转换为一个常量。<br>    3. eq_ref：唯一性索引扫描，对于每个索引键，<strong>表中只有一条记录与之匹配</strong>，常见于主键或唯一索引扫描。（只有一条符合匹配）<br>    4. ref：非唯一性索引扫描，返回匹配某个单独值的所有行，本质上也是一种索引访问，它返回<strong>所有匹配某个单独值的所有行</strong>，然而它可能会找到多个符合条件得行，所以它应该属于查找和扫描得混合体。（有多条符合匹配）<br>    5. range：只检索给定范围得行，使用一个索引来选择行，key列表显示了使用了哪些索引。<strong>一般就是在你得where语句中出现了between、&lt;、&gt;、in等得查询</strong>。这种范围扫描索引比全表扫描要好，因为<strong>它只需要开始于索引得某一个点</strong>，而不用扫描全部索引。（如id大于多少、小于多少）<br>    6. index：Full Index Scan ,index于All的区别为index只遍历索引树。这通常要比ALL快，因为索引文件通常要比数据文件小。也就是说，虽然All和index都是读全表，但是index是从索引中读取的，而all是从硬盘中读取的。<br>    7. all：全表扫描</p>
+<ul>
+<li><p><strong>possible_keys</strong><br>显示可能用在这张表中的索引，一个或多个，查询涉及到的字段上若存在索引，则该索引将被列出，但在该查询中不一定被使用到。</p>
+</li>
+<li><p><strong>key</strong><br>表示实际使用到的索引，如果位NULL则表示没有使用索引</p>
+</li>
+</ul>
+<p>查询中若使用到了覆盖索引，则该索引仅出现在key列表中。</p>
+<p>sql执行时全索引扫面，<strong>如果发现selec查询的字段和顺序和建复合索引时使用的字段一致，就会使用该索引，此时产生覆盖索引</strong></p>
+<blockquote>
+<p>覆盖索引： select的数据列只用从索引中取得，不必读取数据行，MySQL可以利用索引返回select列表中的字段，而不必根据索引再次读取文件，即查询列要被所建的索引覆盖。<br>因为如果将所有字段一起做索引会导致索引文件过大，查询性能下降。</p>
+</blockquote>
+<p>如果用到覆盖索引，select列表中只取出需要的列，不可<code>select * </code></p>
+<ul>
+<li><p><strong>key_len</strong><br>表示索引中使用的字节数，可通过该列计算查询中使用的索引长度，在不损失精度的情况下，长度越短越好。（在建了索引的前提下，查询条件越精确，key_len的值越大）<br>​key_len显示的值为索引字段的最大可能长度，并非实际使用长度，该值是根据表定义计算得到，不是通过表内检索出来的。</p>
+</li>
+<li><p><strong>ref</strong><br>​显示索引的哪一列被使用了（索引的具体引用情况），如果可能的话，是一个常数。哪些列或常量被用于查找索引列上的值。格式为（库名.表名.字段名 或 const）</p>
+</li>
+<li><p><strong>rows</strong><br>表示每张表有多少行被优化器查询过（加起来越少越好）。</p>
+</li>
+<li><p><strong>Extra（重要）</strong><br>包含不适合在其他列显示，但十分重要的额外信息。</p>
+</li>
+</ul>
+<ol>
+<li><p>☆ Using filesort：说明MySQL会对数据使用一个外部的索引排序，而不是按照表内的索引排序进行读取，MySQL无法利用索引完成的排序操作称为“文件排序”，需要尽快优化。MySQL自己在内部产生了一次排序，<strong>会导致性能下降</strong>。因此尽可能的使用原本创建好的索引和索引的顺序。</p>
+</li>
+<li><p>☆ Using temporary：使用了临时表保存中间结果，MySQl在对中间结果排序时使用临时表，常见于排序order by 和分组查询 group by。（一定要赶紧优化，需要见表、删表、性能急速下降,如下图）<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210306214504.png"></p>
+</li>
+<li><p>☆ Using index：</p>
+<ul>
+<li>表示相应的select操作中使用了覆盖索引（Covering Index），避免访问了表的数据行，效率不错。</li>
+<li>如果同时出现using where ，表明索引被用来执行索引键值的查找</li>
+<li>如果没有同时出现using where，表明索引用来读取数据而非执行查找动作。</li>
+</ul>
+</li>
+<li><p>Using where：表明使用了where过滤</p>
+</li>
+<li><p>Using join buffer：使用了连接缓存</p>
+</li>
+<li><p>impossible where：where子句的值总是false，不能用来获取任何元组</p>
+</li>
+<li><p>select tables optimized away（了解）：在没有GROUP BY 子句的情况下，基于索引优化MIN/MAX操作或者对于M有ISAM存储引擎优化COUNT（*）操作，不必等到执行阶段再进行计算，查询执行计划生成的阶段即可完成优化。</p>
+</li>
+<li><p>distinct（了解）：优化distinct操作，在找到第一匹配的元组胡即停止找同样值得动作。 </p>
+</li>
+</ol>
+<h3 id="索引的建立与优化"><a href="#索引的建立与优化" class="headerlink" title="索引的建立与优化"></a>索引的建立与优化</h3><h4 id="索引分析"><a href="#索引分析" class="headerlink" title="索引分析"></a>索引分析</h4><ul>
+<li><p>单表<br>范围需求字段建了索引以后，其后的索引会失效，降低效率。</p>
+</li>
+<li><p>两表<br>以左连接为例，左连接在右表建立索引。<br>原因：左连接时左表一定全要，从右表中搜索，此时要在右表建立索引可以提高搜索效率。</p>
+</li>
+<li><p>三表<br>依然按照两表中的原则，索引最好设置在需要经常查询的字段中。<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210307133135.png"></p>
+</li>
+</ul>
+<blockquote>
+<p>结论</p>
+<blockquote>
+<p>尽可能减少Join语句中的NestedLoop的循环总次数，永远用小表驱动大表。<br>优先优化NestedLoop(嵌套循环)的内层循环<br>保证Join语句中被驱动表上Join条件字段已经被索引<br>当无法把凭证被驱动表的Join条件字段被索引且内存资源充足的前提下，不要太吝啬JoinBuffer的设置。</p>
+</blockquote>
+</blockquote>
+<h4 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h4><ul>
+<li><p><strong>什么是索引失效</strong></p>
+</li>
+<li><p><strong>如何避免</strong></p>
+<ol>
+<li>全值匹配我最爱</li>
+<li>最佳左前缀法则 ——如果索引了多列(a,b,c)，要遵守最左前缀法则。指的是查询从索引的最左前列开始并A不跳过索引中的列。</li>
+<li>不在索引列上做任何操作(计算、函数、(自动or手动)类型转换)，会导致索引失效而转向全表扫描</li>
+<li>存储引擎不能使用索引中范围条件右边的列(范围之后全失效)</li>
+<li>尽量使用覆盖索引(只访问索引的查询(索引列和查询一致)，减少<code>select *</code></li>
+<li>mysql在使用不等于(!=或者&lt;&gt; )的时候无法使用索引会导致全表扫描</li>
+<li>is null ,is not null也无法使用索引(所以尽量不设置空值，而是设置为-1这类不可能出现的值)</li>
+<li>like以通配符开头(‘%xyz…’)mysq|索引失效会变成全表扫描的操作——问题:解决like%字符串%”时索引不被使用的方法??</li>
+<li>字符串不加单引号索引失效（隐式类型转换，见第三条）</li>
+<li>少用or,用它来连接时会索引失效<br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210307143324.png"><br><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210307145125.png"></li>
+</ol>
+</li>
+<li><p><strong>一般性建议</strong></p>
+</li>
+<li><p>对于单键索引，尽量选择针对当前query过滤性更好的索引</p>
+</li>
+<li><p>在选择组合索引的时候，当前Query中过滤性最好的字段在索引字段顺序中，位置越靠前越好</p>
+</li>
+<li><p>在选择组合索引的时候，尽量选择可以能够包含当前query中的where子句中更多字段的索引。</p>
+</li>
+<li><p>尽可能通过分析统计信息和调整query的写法来达到选择合适索引的目的。</p>
+</li>
+<li><p><strong>其它</strong></p>
+<ul>
+<li>如果有复合索引a1, a2, a3使用了<code>where a3=b3 and a2 = b2 and a1 = b1</code>,MySQL的优化器会自动优化，将字段顺序修改为索引字段的顺序，这样就可以覆盖索引了</li>
+<li>索引用于<strong>查找</strong>和<strong>排序</strong>，<code>&gt;, &lt;, order by</code>都会用到索引进行排序</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>最佳左前缀法则<br>带头大哥不能死，中间兄弟不能断<br>第一个断了，直接失效。中间的断了，只能在断掉之前的部分使用索<br>引</p>
+</blockquote>
+<blockquote>
+<p>尽量使用覆盖索用，让索引列和查询列一致，这样可以保证 <code>Using index</code></p>
+</blockquote>
+<blockquote>
+<p>%最好加载右边，不可以加在左边，如果非要用’%abc%’，建议使用覆盖索引，即select 后的字段全部在某个索引内。可以从ALL提升到index。</p>
+</blockquote>
+<h2 id="查询截取分析"><a href="#查询截取分析" class="headerlink" title="查询截取分析"></a>查询截取分析</h2><h3 id="分析优化过程"><a href="#分析优化过程" class="headerlink" title="分析优化过程"></a>分析优化过程</h3><ul>
+<li>观察，至少跑一天，看看生产中慢SQL的情况</li>
+<li>开启慢查询日志，设置阈值，比如超过5秒的SQL语句，并抓取</li>
+<li>explain + 慢SQL分析</li>
+<li>show profile，查询SQL在MySQL服务器里面的执行细节和生命周期情况</li>
+<li>DBA进行SQL数据库服务器的参数调优</li>
+</ul>
+<h3 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h3><ul>
+<li><strong>永远小表驱动大表</strong><ul>
+<li>即小的数据集，驱动大的数据集，从而减少IO次数，</li>
+<li>B表的数据集小于A表时，用in优于exists</li>
+<li>A表的数据集小于B表时，用exists优于in</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210307150023.png"></p>
+<blockquote>
+<p>EXISTS<br>SELECT … FROM table WHERE EXISTS (subquery)<br>该语法可以理解为:将主查询的数据，放到子查询中做条件验证，根据验证结果(TRUE或FALSE)来决定主查询的数据结果是否得以保留,subquery子查询中的<code>SELECT *</code>也可以是<code>SELECT 1</code>或<code>SELECT ‘X’</code>，官方说法是实际执行时会忽略SELECT清单，因此没区别</p>
+</blockquote>
+<h4 id="order-by关键字优化"><a href="#order-by关键字优化" class="headerlink" title="order by关键字优化"></a>order by关键字优化</h4><p>尽量不要产生filesort</p>
+<ul>
+<li><p><strong>最佳左前缀原则依然有效</strong></p>
+<ul>
+<li>order by后所用的索引要按照创建的顺序，不能间断，否则会产生文件排序。跟前面的内容无关。</li>
+<li>默认是升序，如果同时使用降序和升序，即使按照索引顺序，也会导致文件排序。除非所有索引都降序，且按照索引顺序，就不会产生文件排序。</li>
+</ul>
+</li>
+<li><p><strong>filesort排序算法</strong><br>双路排序：MySQL4.1之前使用的是该算法，取一批数据需要进行两次扫描。<br>单路排序：4.1版本以后采用单路算法，一次读取，在buffer中排序，只用读一次，总体好于双路排序。<br>结论：<strong>单路排序可能会因为sort_buffer的太小产生多次IO</strong>，还不如双路排序，因此需要进行相应的配置。</p>
+</li>
+<li><p><strong>提升性能方法</strong></p>
+<ul>
+<li><p>order by 就尽量不要SELECT *，因为如果产生了filesort就会增加缓存，把sort_buffer_size给用满了，导致产生多次IO。</p>
+</li>
+<li><p>有filesort可尝试提高sort_buffer_size，根据系统能力去提高，该参数针对每个进程。</p>
+</li>
+<li><p>有filesort可尝试提高max_length_for_sort_data，太大，数据总量超过sort_buffer_size会导致高的磁盘IO和低的处理器利用率。</p>
+<p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/20210307154137.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="group-by关键字优化"><a href="#group-by关键字优化" class="headerlink" title="group by关键字优化"></a>group by关键字优化</h4><p>group by 的实质是先排序后分组，遵照索引建的最佳左前缀，当无法使用索引列，增大sort_buffer_size 和 max_length_for_sort_data的参数设置，</p>
+<p>where高于having ，因此能写在where里的条件就不要到having中去限制。</p>
+<h3 id="慢查询日志"><a href="#慢查询日志" class="headerlink" title="慢查询日志"></a>慢查询日志</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
+<li>MySQl的慢查询日志是MySQL提供的一种日志记录，它用来记录在MySQL中响应时间超过阈值的语句，具体指运行时间超过 long_query_time值得SQL，则会记录在慢查询日志中。</li>
+<li>long_query_time得默认值是10，即10秒钟</li>
+</ul>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><ul>
+<li><p>默认MySQL数据库没有开启，需要我们手动得开启慢查询日志。非调优需要不建议开启，因为开启慢查询会多少对性能造成影响，慢查询日志支持将日志写入文件。</p>
+</li>
+<li><p>命令：</p>
+<ul>
+<li><code>SHOW VARIABLES LIKE &#39;%slow_query_log%&#39;</code>; 查看是否开启及存储文件</li>
+<li><code>set global show_query_log=1; </code>开启慢查询（只对当前数据库有效，重启后就会失效）</li>
+<li><code>set global long_query_time=3;</code> 设置阈值为3 （本库有效，重启无效，重开一个连接通过show才能查到）</li>
+<li><code>SHOW global status like &#39;%Slow_queries%&#39;;</code> 查询日志的条数</li>
+</ul>
+</li>
+<li><p>永久开启（不建议）<br>  修改my.cnf在[mysqld]下增加或修改参数<br>  slow_query_log=1<br>  slow_query_log_file=/var/lib/mysql/xxx.log (缺省得文件名为主机+slow.log)<br>  long_query_time = 3<br>  log_output=FILE<br>  执行测试</p>
+</li>
+</ul>
+<p>可通过select sleep(5); 等方式来执行语句，这样如果阈值低于5秒，该语句会被记录。</p>
+<h4 id="分析工具"><a href="#分析工具" class="headerlink" title="分析工具"></a>分析工具</h4><p>在生产中，手工分析日志比较麻烦，因此MySQL提供了日志分析工具，mysqldumpslow。</p>
+<h4 id="批量数据脚本"><a href="#批量数据脚本" class="headerlink" title="批量数据脚本"></a>批量数据脚本</h4><p>开启二进制方法创建<br>创建函数，保证每条数据都不同<br>创建存储函数，一次插入批量数据<br>调用函数</p>
+<h3 id="Show-Profile"><a href="#Show-Profile" class="headerlink" title="Show Profile"></a>Show Profile</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>Show Profile是mySQL提供的可以用来分析当前会话中语句执行的资源消耗情况，可以用于SQL的调优测量，默认是关闭状态，并保存最近15次的运行结果。</p>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
+<li><code>show variables like &#39;profiling;&#39; </code>查看是否开启</li>
+<li><code>set profiling=on; </code>打开profile</li>
+<li><code>show profiles;</code> 查看执行过的SQL，包含执行时间和SQL语句、查询ID信息。</li>
+<li><code>show profile cpu,block io for query 查询ID;</code> 列出上面某个查询的详细过程信息。<strong>一条SQL的完整生命周期</strong>。</li>
+</ul>
+<h3 id="全局查询日志"><a href="#全局查询日志" class="headerlink" title="全局查询日志"></a>全局查询日志</h3><p>只能在测试环境用，不能在生产环境用。</p>
+<h2 id="MySQL锁机制"><a href="#MySQL锁机制" class="headerlink" title="MySQL锁机制"></a>MySQL锁机制</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>锁是计算机协调多个进程或线程并发访问某一资源的机制</p>
+<p>在数据库中，除传统的CPU、RAM、IO等资源的征用以外，数据也是一种很多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突也是并发访问性能的一个重要的因素，锁对于数据库尤为的重要，也更复杂。</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>操作类型分类<ul>
+<li>读锁（共享锁）：针对同一份数据，多个读操作可同时进行，互不影响</li>
+<li>写锁（排他锁）：当前写操作未完成之前，会阻断其他的写锁和读锁。</li>
+</ul>
+</li>
+<li>操作颗粒度分类<ul>
+<li>表锁</li>
+<li>行锁</li>
+</ul>
+</li>
+</ul>
+<h3 id="MySQL的锁机制"><a href="#MySQL的锁机制" class="headerlink" title="MySQL的锁机制"></a>MySQL的锁机制</h3><h4 id="表锁（偏读）"><a href="#表锁（偏读）" class="headerlink" title="表锁（偏读）"></a>表锁（偏读）</h4><p>偏向于MyISAM存储引擎，开销小，加锁快，无死锁，锁定粒度大，发生锁冲突的概率最高，并发度低。<br>MyISQM在执行select前会对所涉及的表加读锁，在执行增删改之前，会对涉及的表加写锁。</p>
+<ul>
+<li><p>命令</p>
+<ul>
+<li><code>show open tables; </code>查看表上加过的锁，0未锁</li>
+<li><code>lock table 表名 read(write); </code>给表加读锁或者写锁</li>
+<li><code>unlock tables; </code>解除库中所有的锁</li>
+</ul>
+</li>
+<li><p>注意点（针对MyISAM引擎）：</p>
+<ul>
+<li>加表的<strong>读锁</strong>以后，只能读该表，不能读其他表或写这个表，一定要解除了自己加的这个锁以后才能做其他操作。其他连接要进行写操作要被堵塞。</li>
+<li>对表加<strong>写锁</strong>后，该连接可读、改自己锁的表，同样在没有解锁前不能操作其他表。<strong>其他表对该表查询和写同样阻塞</strong>。</li>
+<li>当前会话不解锁，其它操作该表的会话就会一直等待。<blockquote>
+<p>注意： MyISAM的读写锁调度是写优先，因此不适合作为写为主的情况，写锁后其他线程不能做任何操作，大量更新会使查询很难得到锁，从而造成永远阻塞。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="行锁（偏写）"><a href="#行锁（偏写）" class="headerlink" title="行锁（偏写）"></a>行锁（偏写）</h4><p>偏向于InnoDB引擎，开销大、加锁慢，会出现死锁，锁的粒度小，发生冲突的可能小，并发高。InnoDB支持事务，并采用了行锁。 （复习事务的隔离级别，和数据库事务。）</p>
+<ul>
+<li><p><strong>行锁变表锁</strong></p>
+</li>
+<li><p>*索引失效会导致行锁变表锁**，常出现索引失效就是自动类型转换，即varchar数据不加单引号。这时操作数据会导致索引失效，操作过程锁住整个表。</p>
+</li>
+<li><p><strong>间隙锁危害</strong><br>当我们用范围条件而不是相等条件去检索数据的时候，并请求共享和排他锁时，InnoDB会给符合条件的已有数据的索引加索，对于键值在条件范围内但不存在的记录，叫做间隙（GAP）。<br>​当锁定一个范围的键值以后，即使某些不存在的键值也会被无辜的锁定，而造成在锁定的时候，无法插入锁定范围内的任何数据</p>
+</li>
+</ul>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>Innodb存储引擎由于实现了行级锁定，虽然在锁定机制的实现方面所带来的性能损耗可能比表级锁定会要更高一些，但是在整体并发处理能力方面要远远优于MyISAM的表级锁定的。当系统并发量较高的时候，Innodb的整体性能和MyISAM相比就会有比较明显的优势了。<br>但是，Innodb的行级锁定同样也有其脆弱的一面，当我们使用不当的时候，可能会让Innodb的整体性能表现不仅不能比MyISAM高，甚至可能会更差。</p>
+<h4 id="优化分析"><a href="#优化分析" class="headerlink" title="优化分析"></a>优化分析</h4><ul>
+<li><code>show status like &#39;innodb_row_lock&#39;;</code> 查看行锁的状态</li>
+<li><code>innodb_row_lock_current_waits</code>: 当前正在等待的锁的数量</li>
+<li><code>innodb_row_lock_time</code>： 从系统锁定到现在锁定的总时间长度</li>
+<li><code>innodb_row_lock_time_max</code>： 从系统锁定到现在锁定最长的一次所花时间</li>
+<li><code>innodb_row_lock_time_avg</code>： 从系统锁定到现在锁定的平均时长</li>
+<li><code>innodb_row_lock_waits</code>：系统启动后到现在总共等待的次数</li>
+</ul>
+<h4 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h4><ul>
+<li>尽可能让所有数据检索都通过索引来完成，避免无索引行锁升级为表锁</li>
+<li>合理设计索引，尽量缩小锁的范围</li>
+<li>尽可能减少检索条件，避免间隙锁</li>
+<li>尽量控制事务大小，减少锁定资源量和时间长度</li>
+<li>尽可能低级别事务隔离。</li>
+</ul>
+<h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><h3 id="复制过程"><a href="#复制过程" class="headerlink" title="复制过程"></a>复制过程</h3><ol>
+<li>master将改变记录到二进制日志（binary log）中，这些日志叫做二进制日志事件，<code>binary log events</code>。</li>
+<li>slave将master的<code>binary log events</code>拷贝到它的中继日志（relay log）</li>
+<li>slave重做中继日志中的事件，将改变应用到自己的数据库中，MySQL复制是异步且串行化的。</li>
+</ol>
+<h3 id="复制原则"><a href="#复制原则" class="headerlink" title="复制原则"></a>复制原则</h3><ul>
+<li>每个slave只能有一个master</li>
+<li>买个slave只能有一个唯一的服务器ID</li>
+<li>每个master可以有多个slave</li>
+</ul>
+<h3 id="复制的最大问题"><a href="#复制的最大问题" class="headerlink" title="复制的最大问题"></a>复制的最大问题</h3><p>延时</p>
+<h3 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h3><ul>
+<li>MySQL版本一致，且以后台服务运行</li>
+<li>主从配置在[mysqld]节点下，都是小写</li>
+<li>主机和从机都要关闭防火墙 service iptables stop 关闭linux防火墙</li>
+</ul>
+<blockquote>
+<p>复习文件<br>二进制日志文件 </p>
+<blockquote>
+<p>log-bin 用于主从复制<br>log-err 记录mysql的错误日志<br>查询日志log 用于记录查询的sql语句</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>数据文件</p>
+<blockquote>
+<p>frm文件 存放表结构<br>myd文件 存放表数据<br>myi文件 存放表索引</p>
+</blockquote>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">monkey-nut</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://blog.nightmare.cool/2021-02-23-1.html">http://blog.nightmare.cool/2021-02-23-1.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">monkey-nut</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021-03-12-13.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Docker(2) 常用命令行">
+                        
+                        <span class="card-title">Docker(2) 常用命令行</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021-02-01-4111.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="MySql(6) 连接查询">
+                        
+                        <span class="card-title">MySql(6) 连接查询</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">monkey-nut</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">备案/许可证号：豫ICP备2020025825号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/hou2529994315" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2529994315@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2529994315" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2529994315" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
