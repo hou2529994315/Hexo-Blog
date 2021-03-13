@@ -402,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1k
                 </div>
                 
 
@@ -420,54 +420,54 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><h2 id="查看修改信息"><a href="#查看修改信息" class="headerlink" title="查看修改信息"></a>查看修改信息</h2><p>修改文件，运行<code>git status</code>命令看看结果</p>
-<pre><code>git status
+<pre class=" language-git"><code class="language-git">git status
 On branch master
 Changes not staged for commit:
-  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+  (use <span class="token string">"git add &lt;file>..."</span> to update what will be committed)
+  (use <span class="token string">"git checkout -- &lt;file>..."</span> to discard changes in working directory)
 
     modified:   readme.txt
 
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+no changes added to commit (use <span class="token string">"git add"</span> and/or <span class="token string">"git commit -a"</span>)</code></pre>
 <p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，readme.txt被修改过了，但还没有准备提交的修改。</p>
 <p><code>git diff</code>可以看到详细的修改</p>
-<pre><code>git diff readme.txt 
+<pre class=" language-git"><code class="language-git">git diff readme.txt 
 diff --git a/readme.txt b/readme.txt
 index 46d49bf..9247db6 100644
---- a/readme.txt
-+++ b/readme.txt
-@@ -1,2 +1,2 @@
--Git is a version control system.
-+Git is a distributed version control system.
+<span class="token deleted">--- a/readme.txt</span>
+<span class="token inserted">+++ b/readme.txt</span>
+<span class="token coord">@@ -1,2 +1,2 @@</span>
+<span class="token deleted">-Git is a version control system.</span>
+<span class="token inserted">+Git is a distributed version control system.</span>
  Git is free software.</code></pre>
 <p><strong>总结</strong><br><code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容</p>
 <h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p><code>git log</code>命令显示从最近到最远的提交日志。</p>
-<pre><code>git log
-commit 1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -&gt; master)
-Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+<pre class=" language-git"><code class="language-git">git log
+commit 1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -> master)
+Author: Michael Liao &lt;askxuefeng@gmail.com>
 Date:   Fri May 18 21:06:15 2018 +0800
 
     append GPL
 
-commit e475afc93c209a690c39c13a46716e8fa000c366
-Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+<span class="token commit_sha1">commit e475afc93c209a690c39c13a46716e8fa000c366</span>
+Author: Michael Liao &lt;askxuefeng@gmail.com>
 Date:   Fri May 18 21:03:36 2018 +0800
 
     add distributed
 
-commit eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0
-Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+<span class="token commit_sha1">commit eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0</span>
+Author: Michael Liao &lt;askxuefeng@gmail.com>
 Date:   Fri May 18 20:59:18 2018 +0800
 
     wrote a readme file</code></pre>
 <p>嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数</p>
-<pre><code>git log --pretty=oneline
-1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -&gt; master) append GPL
+<pre class=" language-git"><code class="language-git">git log --pretty=oneline
+1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -> master) append GPL
 e475afc93c209a690c39c13a46716e8fa000c366 add distributed
 eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0 wrote a readme file</code></pre>
 <p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>1094adb...</code>（注意我的提交ID和你的肯定不一样），上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
 <p>如果需要回退，可以使用<code>git reset</code>命令</p>
-<pre><code>git reset --hard HEAD^
+<pre class=" language-git"><code class="language-git">git reset --hard HEAD^
 HEAD is now at e475afc add distributed</code></pre>
 <p>回退以后，再使用<code>git log</code>就无法看到回退的版本了，因此如果想撤销回退，需要使用<code>git reset --hard 1094a</code><br><code>1094a</code>是版本号，但是版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
 <p>如果忘记了版本号，可以使用<code>git reflog</code>查看版本号</p>
@@ -490,7 +490,7 @@ HEAD is now at e475afc add distributed</code></pre>
 </ul>
 <p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/2020-11-18-14-08-08.png"></p>
 <p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；<br>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
-<p>一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的：<br>it status<br>On branch master<br>nothing to commit, working tree clean</p>
+<p>一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的：<br><code>it status On branch master nothing to commit, working tree clean</code></p>
 <h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p><code>git checkout -- file</code>可以丢弃工作区的修改</p>
 <p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
 <p>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>

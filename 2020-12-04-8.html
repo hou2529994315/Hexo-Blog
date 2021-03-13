@@ -471,17 +471,15 @@ int Foo (int x) => x*2;        //简写，仅适用于单表达式</code></pre>
 <li><p>向上转换-隐式转换（子类赋值给父类）向下转换-显示转换（父类赋值给字类），都是引用赋值</p>
 </li>
 <li><p>is</p>
-<pre><code>用户向下转换前的验证
+<pre class=" language-c#"><code class="language-c#">用户向下转换前的验证
 if(a is Parent)&#123;
-
 &#125;</code></pre>
-<pre><code>Parent p
+<pre class=" language-c#"><code class="language-c#">Parent p
 if(a is Parent)&#123;
-    p = (Parent)a;
+  p = (Parent)a;
 &#125;</code></pre>
-<p>  简写为</p>
-<pre><code>if(a is Parent p)&#123;
-
+<p>简写为</p>
+<pre class=" language-c#"><code class="language-c#">if(a is Parent p)&#123;
 &#125;</code></pre>
 </li>
 </ul>
@@ -489,15 +487,15 @@ if(a is Parent)&#123;
 <li><p>标记为virtual 的函数可以被字类重写，包括方法、属性、索引器、事件</p>
 </li>
 <li><p>重写时使用override修饰符</p>
-<pre><code>public class Asset
+<pre class=" language-c#"><code class="language-c#">public class Asset
 &#123;
-    public virtual decimal Liability =&gt; 0;
+    public virtual decimal Liability => 0;
 &#125;
 
 public class Stock:Asset
 &#123;
     public decimal Mortgage;
-    public override decimal Liability =&gt; Mortgage;
+    public override decimal Liability => Mortgage;
 &#125;</code></pre>
 <ul>
 <li>重写方法里可以使用base关键字调用父类的实现</li>
@@ -520,11 +518,11 @@ public class Stock:Asset
 <li><p>值类型和object转化时，需要进行装箱和拆箱</p>
 </li>
 <li><p><strong>装箱</strong> 把值类型转换为引用类型，目标可以是object,也可以是某个接口</p>
-<pre><code>int x = 9;
+<pre class=" language-c#"><code class="language-c#">int x = 9;
 object obj = x;</code></pre>
 </li>
 <li><p><strong>拆箱</strong></p>
-<pre><code>object obj = 9;     //9的类型推断是int，int装箱
+<pre class=" language-c#"><code class="language-c#">object obj = 9;     //9的类型推断是int，int装箱
 long x = (long)obj; //抛出异常，因为类型不一致（要求为int）
 
 long x = (int)obj; //转化成功，拆箱成为int，int再隐式转换为long</code></pre>
@@ -538,7 +536,7 @@ long x = (int)obj; //转化成功，拆箱成为int，int再隐式转换为long<
 <li><p>所有的内置类型都重写了tostring()方法.自定义的类型也可以重写，不重写就会返回类型名</p>
 </li>
 </ul>
-<h2 id="object成员列表"><a href="#object成员列表" class="headerlink" title="object成员列表"></a>object成员列表</h2><pre class=" language-C#"><code class="language-C#">        //
+<h2 id="object成员列表"><a href="#object成员列表" class="headerlink" title="object成员列表"></a>object成员列表</h2><pre class=" language-c#"><code class="language-c#">        //
         // 摘要:
         //     Initializes a new instance of the System.Object class.
         public Object();

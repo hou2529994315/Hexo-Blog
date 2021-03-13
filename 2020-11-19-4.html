@@ -419,16 +419,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git-指令"><a href="#git-指令" class="headerlink" title="git 指令"></a>git 指令</h1><pre><code>git add &#123;file&#125; 添加修改到暂存区
-git commit -m &quot;&#123;备注&#125;&quot;  讲暂存区的文件提交，生成新的版本
+                <h1 id="git-指令"><a href="#git-指令" class="headerlink" title="git 指令"></a>git 指令</h1><pre class=" language-git"><code class="language-git">git add &amp;#123;file&amp;#125; 添加修改到暂存区
+git commit -m <span class="token string">"&amp;#123;备注&amp;#125;"</span>  讲暂存区的文件提交，生成新的版本
 git status 查看文件的变化
 git log     查看版本记录
 git reflog  查看历史修改记录
 git reset --hard HEAD^      重置会上个版本
-git reset --hard &#123;标识号&#125;   重置会目标版本，可只写版本号的前几位，git会自动追踪
-git checkout --&#123;file&#125;   恢复到暂存区中的文件，如果暂存区没有文件，则恢复到上个版本。但是不能连续撤回
+git reset --hard &amp;#123;标识号&amp;#125;   重置会目标版本，可只写版本号的前几位，git会自动追踪
+git checkout --&amp;#123;file&amp;#125;   恢复到暂存区中的文件，如果暂存区没有文件，则恢复到上个版本。但是不能连续撤回
 
-git rm --&#123;file&#125;     从版本库中删除某个文件（需要再git commit）</code></pre>
+git rm --&amp;#123;file&amp;#125;     从版本库中删除某个文件（需要再git commit）</code></pre>
 <p><strong>远程仓库</strong></p>
 <p>通过<code>git bash</code>设置<code>ssh</code>  略</p>
 <p><code>git remote add origin git@github.com:hou2529994315/TestGit.git</code>        添加远程库，远程库的名字叫做<code>origin</code></p>
@@ -443,12 +443,12 @@ git rm --&#123;file&#125;     从版本库中删除某个文件（需要再git c
 <p><code>git checkout -b dev</code>       新建分支dev  <code>-b</code>参数表示创建并切换分支</p>
 <p><code>git checkout &#123;分支名&#125;</code>      切换分支</p>
 <p><code>git branch</code>            列出所有分支，当前分支前面会标一个*号</p>
-<pre><code>git branch
+<pre class=" language-git"><code class="language-git">git branch
 
 * dev
   master</code></pre>
 <p><code>git merge &#123;分支名&#125;</code>     把另一个分支的内容合并到当前分支</p>
-<pre><code>git merge dev
+<pre class=" language-git"><code class="language-git">git merge dev
 
 Updating 6409e7d..5a66c95
 Fast-forward
@@ -462,54 +462,54 @@ Fast-forward
 <p><img src="https://gitee.com/ghost_building_puppet_master/img-hosting/raw/master/img/2020-11-19-15-48-22.png"></p>
 <p>此时使用合并指令的时候会提示存在冲突</p>
 <p>Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容<br>如：</p>
-<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<pre class=" language-git"><code class="language-git">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 Creating a new branch is quick &amp; simple.
 =======
 Creating a new branch is quick AND simple.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</code></pre>
+>>>>>>> feature1</code></pre>
 <p>修改冲突部分再次使用<code>git add </code>, <code>git commit</code>进行提交，即可完成两者的合并</p>
 <p>并且可以使用带参数的<code>git log</code>查看分支的合并情况<br><code>git log --graph --pretty=oneline --abbrev-commit</code></p>
-<pre><code>*   4322cf0 conflict fixed
-|\  
-| * 94fa7a9 AND simple
-* | a0932ce &amp; simple
-|/  
-* 5a66c95 branch test
+<pre class=" language-bash"><code class="language-bash">*   4322cf0 conflict fixed
+<span class="token operator">|</span>\  
+<span class="token operator">|</span> * 94fa7a9 AND simple
+* <span class="token operator">|</span> a0932ce <span class="token operator">&amp;</span> simple
+<span class="token operator">|</span>/  
+* 5a66c95 branch <span class="token function">test</span>
 * 6409e7d 测试第二次推送到远程仓库
 * 85971d1 测试提交到远程仓库
 * 5b01d46 remove test.txt
 * 994e55e add test.txt
 * 60ceb97 测试checkout
-* 9b98464 git tracks changes
+* 9b98464 <span class="token function">git</span> tracks changes
 * 40beaac understand how stage works
 * e37aa43 append GPL
 * 409a7d1 add distributed
-* 2f68874 write a readme file</code></pre>
+* 2f68874 <span class="token function">write</span> a readme <span class="token function">file</span></code></pre>
 <p>合并后删除分支文件即可</p>
 <h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>如果可以，git会默认使用<code>Fast forward</code>模式进行合并，但是这样会丢失分支信息<br>可以使用<code>--no-ff</code>禁用<code>Fast forward</code>模式</p>
 <p><code>git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></p>
 <p>正常情况下，应该有一个稳定的<code>master</code>分支，发布新版本才用；有一个干活的<code>dev</code>分支；每个人有一个自己的分支，然后不定时的往<code>dev</code>分支合并</p>
 <p><code>git stash</code>     保存工作现场<br><code>git stash list</code>    查看现有的工作现场<br><code>git stash apply</code>   恢复工作现场，但是需要使用  <code>git stash drop</code>来删除<br><code>git stash pop</code>     恢复工作现场的同时删除它</p>
 <p>如果有多个工作现场，也可以指定恢复哪一个</p>
-<pre><code>git stash apply stash@&#123;0&#125;</code></pre>
+<pre class=" language-git"><code class="language-git">git stash apply stash@&amp;#123;0&amp;#125;</code></pre>
 <p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。</p>
 <h2 id="团队合作"><a href="#团队合作" class="headerlink" title="团队合作"></a>团队合作</h2><p>队友的最新提交和你试图提交的文件有冲突<br>先用<code>git pull</code>把最新的提交抓取下来，然后在本地合并，解决冲突，再提交上去</p>
 <p><strong>暂时没有遇到，记录一下</strong></p>
-<pre><code>git pull
+<pre class=" language-git"><code class="language-git">git pull
 There is no tracking information for the current branch.
 Please specify which branch you want to merge with.
 See git-pull(1) for details.
 
-    git pull &lt;remote&gt; &lt;branch&gt;
+    git pull &lt;remote> &lt;branch>
 
 If you wish to set tracking information for this branch you can do so with:
 
-    git branch --set-upstream-to=origin/&lt;branch&gt; dev
+    git branch --set-upstream-to=origin/&lt;branch> dev
 
 git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接
 
 git branch --set-upstream-to=origin/dev dev
-Branch &#39;dev&#39; set up to track remote branch &#39;dev&#39; from &#39;origin&#39;.
+Branch <span class="token string">'dev'</span> set up to track remote branch <span class="token string">'dev'</span> from <span class="token string">'origin'</span>.
 
 再pull：
 git pull

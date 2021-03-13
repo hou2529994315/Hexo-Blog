@@ -537,24 +537,17 @@
 </li>
 <li><p>数值类型</p>
 <ul>
-<li><p>数值赋值时可以使用下划线,例如：<br><code>int million = 1_000_000;</code></p>
-</li>
-<li><p>类型推断（小数-&gt;double,整数-&gt;可容纳该值的最小类型）</p>
-</li>
-<li><p><code>checked</code>关键字可令加减乘除抛出异常,来检查溢出<br>```<br>checked<br>{<br>  int d = a * b;<br>}</p>
-</li>
-<li><p>1.0/0.0 = Infinity</p>
-</li>
-<li><p>1.0/-0.0 = -Infinity</p>
-</li>
-<li><p>0.0/0.0 = NaN</p>
-<pre><code></code></pre>
+<li>数值赋值时可以使用下划线,例如：<br><code>int million = 1_000_000;</code></li>
+<li>类型推断（小数-&gt;double,整数-&gt;可容纳该值的最小类型）</li>
+<li><code>checked</code>关键字可令加减乘除抛出异常,来检查溢出<br>``` git<br>checked<br>{<br>  int d = a * b;<br>}</li>
+<li>1.0/0.0 = Infinity</li>
+<li>1.0/-0.0 = -Infinity</li>
+<li>0.0/0.0 = NaN<br>```</li>
+</ul>
 </li>
 <li><p>NaN 不等于任何值，包括NaN本身</p>
 </li>
 <li><p>使用object.Equals()时，两个NaN相等<br>验证某个值是否为NaN,可以使用<code>float.IsNan()</code>,<code>double.IsNan()</code><br>decimal非常适合财务计算</p>
-</li>
-</ul>
 </li>
 </ul>
 <h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><p>可空值类型除了可以表示正常数据，还可以表示null,使用方法<br><code>Nullable&lt;int&gt; indexOfM = null</code><br>简写 <code>int？ indexOfM = null</code></p>
